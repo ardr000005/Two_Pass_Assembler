@@ -31,9 +31,8 @@ DEBUG = False
 ALLOWED_HOSTS = [
     'two-pass-assembler2.onrender.com',
     'two-pass-assembler-3.onrender.com',
-    'two-pass-assembler-4.onrender.com'# Add this line
+    'two-pass-assembler-4.onrender.com',  # Added for additional host
 ]
-
 
 # Application definition
 
