@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assembler</title>
+    <link rel="stylesheet" href="styles.css"> </head>
+<body>
+    <div class="container">
+        <h1>Assembler</h1>
+        <h2>Pass 1 & Pass 2</h2>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="input-group">
+                <label for="inputFile">Input File:</label>
+                <input type="file" name="inputFile" required accept="*">
+            </div>
+            <div class="input-group">
+                <label for="optabFile">OPTAB File:</label>
+                <input type="file" name="optabFile" required accept="*">
+            </div>
+            <div class="button-container">
+                <button type="submit" name="pass1_button" class="primary-button">Run Pass 1</button>
+            </div>
+        </form>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="button-container">
+                <button type="submit" name="clear_button" class="secondary-button">Clear</button>
+            </div>
+        </form>
+
+        {% if pass1_done %}
+        <h2>Pass 1 Results</h2>
+        <div class="result-container">
+            <h3>Intermediate File Content:</h3>
+            <pre>{{ intermediate }}</pre>
+
+            <h3>SYMTAB Content:</h3>
+            <pre>{{ symtab }}</pre>
+
+            <h3>Program Length: {{ length }}</h3>
+        </div>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="button-container">
+                <button type="submit" name="pass2_button" class="primary-button">Run Pass 2</button>
+            </div>
+        </form>
+
+        {% if object_code %}
+        <h2>Pass 2 Results</h2>
+        <div class="result-container">
+            <h3>Object Code: </h3>
+            <pre>{{ object_code }}</pre>
+        </div>
+        {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>
+<style>
+    body {
+    background: linear-gradient(to right, #c7c7f9, #8e9cac);
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 10px;
+}
+
+.button-container {
+    text-align: center;
+}
+
+.primary-button {
+    background-color: #00ffe1;
+    color: rgb(7, 3, 3);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.secondary-button {
+    background-color: #ccc;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.result-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+pre {
+    overflow-x: auto;
+}
+</style>

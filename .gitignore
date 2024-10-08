@@ -1,0 +1,7 @@
+# Virtual environment
+venv/
+env/
+
+.env
+
+DJANGO_SECRET_KEY='django-insecure-rvvz-^v!5ljsnkf6rj#%+783j383+$zl#91=2)+24)ow!wg6-v'
