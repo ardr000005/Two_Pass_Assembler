@@ -26,9 +26,13 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'fallback-secret-key')  # Ensur
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'yourapp.onrender.com']  
+ALLOWED_HOSTS = [
+    'two-pass-assembler2.onrender.com',
+    'two-pass-assembler-3.onrender.com',
+    'two-pass-assembler-4.onrender.com'# Add this line
+]
 
 
 # Application definition
@@ -79,9 +83,11 @@ WSGI_APPLICATION = 'pgui.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.dummy',  # No database engine
+        'ENGINE': 'django.db.backends.sqlite3',  # or your chosen database engine
+        'NAME': BASE_DIR / "db.sqlite3",
     }
 }
+
 
 
 
