@@ -1,6 +1,3 @@
-Here's a refined version of your documentation suitable for a GitHub README:
-
----
 
 # Two Pass Assembler
 
@@ -103,6 +100,4 @@ The `single_page.html` template provides the user interface, allowing users to u
 
 Session management is crucial for maintaining state across requests. The application uses Django's built-in session framework to store intermediate content, symbol tables, program lengths, and object code.
 
----
 
-Feel free to modify any sections as needed!
