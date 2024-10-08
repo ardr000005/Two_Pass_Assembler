@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'fallback-secret-key')  # Ensur
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [''https://two-pass-assembler2.onrender.com'']  
+ALLOWED_HOSTS = ['https://two-pass-assembler3.onrender.com']  
 
 
 # Application definition
