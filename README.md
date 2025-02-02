@@ -1,30 +1,29 @@
+# 🚀 Two Pass Assembler
 
-# Two Pass Assembler
+## 📌 Overview
 
-## Overview
+The **Two Pass Assembler** is a web-based tool built with **Django** that simulates the **first and second passes** of an assembler. It allows users to upload input files and an **operation table (OPTAB)** to generate **intermediate** and **object code** based on assembly language instructions. The application features a **user-friendly interface** for running passes and viewing results, including **symbol tables** and **program lengths**.
 
-The Two Pass Assembler is a web-based tool built with Django that simulates the first and second passes of an assembler. It allows users to upload input files and an operation table (OPTAB) to generate intermediate and object code based on assembly language instructions. The application features a user-friendly interface for running passes and viewing results, including symbol tables and program lengths.
+## ✨ Features
 
-## Features
+- 📂 **File Upload**: Upload assembly language files and an OPTAB file.
+- 🔄 **Pass 1 Logic**: Generates intermediate file content and a symbol table.
+- 🖥️ **Pass 2 Logic**: Uses intermediate data to produce the final object code.
+- ❌ **Clear Functionality**: Resets all session data with one click.
+- ⚠️ **Error Handling**: Prevents running Pass 2 without completing Pass 1.
 
-- **File Upload**: Users can upload input files containing assembly instructions and a corresponding OPTAB file.
-- **Pass 1 Logic**: Processes the input file to generate intermediate file content and a symbol table.
-- **Pass 2 Logic**: Uses the intermediate content and symbol table to produce the final object code.
-- **Clear Functionality**: Allows users to clear all session data and reset the page.
-- **Error Handling**: Provides user feedback if Pass 1 is not completed before running Pass 2.
+## 🛠 Installation
 
-## Installation
+To set up the **Two Pass Assembler**, follow these steps:
 
-To set up the Two Pass Assembler, follow these steps:
+### ✅ Prerequisites
 
-### Prerequisites
+- 🐍 **Python 3.x**
+- 🌐 **Django**
 
-- Python 3.x
-- Django
+### 🚀 Steps
 
-### Steps
-
-1. **Create a Virtual Environment**: 
+1. **Create a Virtual Environment**:
    ```bash
    python -m venv env
    ```
@@ -33,71 +32,75 @@ To set up the Two Pass Assembler, follow these steps:
    source env/bin/activate  # On Windows use `env\Scripts\activate`
    ```
 
-2. **Install Required Packages**: 
+2. **Install Required Packages**:
    ```bash
    pip install django
    ```
 
-3. **Run Database Migrations**: 
+3. **Run Database Migrations**:
    ```bash
    python manage.py migrate
    ```
 
-4. **Run the Development Server**: 
+4. **Run the Development Server**:
    ```bash
    python manage.py runserver
    ```
 
-5. **Access the Application**: 
-   Open your web browser and navigate to `http://127.0.0.1:8000/` to access the Two Pass Assembler.
+5. **Access the Application**:
+   Open your browser and go to **`http://127.0.0.1:8000/`**.
 
-## Usage
+## 📌 Usage
 
-1. **Upload Files**: 
-   - Use the "Input File" field to upload your assembly language file.
-   - Use the "OPTAB File" field to upload the operation table.
+1. **Upload Files** 📂
+   - Upload your **assembly language file** and **OPTAB file**.
 
-2. **Run Pass 1**: 
-   - Click the "Run Pass 1" button to process the uploaded files. 
-   - The results, including the intermediate file content and symbol table, will be displayed on the page.
+2. **Run Pass 1** ▶️
+   - Click **"Run Pass 1"** to process the files.
+   - View the **intermediate file** and **symbol table**.
 
-3. **Run Pass 2**: 
-   - If Pass 1 is successful, click the "Run Pass 2" button to generate the object code.
+3. **Run Pass 2** 🔄
+   - Click **"Run Pass 2"** to generate the **object code**.
 
-4. **Clear Data**: 
-   - Click the "Clear" button to reset the application, clearing all session data.
+4. **Clear Data** ❌
+   - Click **"Clear"** to reset the application.
 
-5. **Error Handling**: 
-   - If you attempt to run Pass 2 without completing Pass 1, an error message will prompt you to run Pass 1 first.
+5. **Error Handling** ⚠️
+   - If you try to run Pass 2 without Pass 1, an **error message** appears.
 
-## Code Explanation
+## 📝 Code Explanation
 
-### Views
+### 📌 Views (`views.py`)
 
-The main functionality of the application resides in the `single_page_view` function within the `views.py` file. Here’s a breakdown of the logic:
+- **Pass 1 Logic**
+  - Reads **input and OPTAB files**.
+  - Generates **intermediate content** and a **symbol table**.
+  - Stores results in the **session**.
 
-- **Pass 1 Logic**: 
-  - Reads the uploaded input and OPTAB files.
-  - Processes the assembly instructions to generate intermediate content and a symbol table.
-  - Stores results in the session.
+- **Pass 2 Logic**
+  - Retrieves **intermediate data** and **symbol table**.
+  - Generates **object code**.
 
-- **Pass 2 Logic**: 
-  - Retrieves intermediate content and symbol table from the session.
-  - Generates object code based on the retrieved data.
+- **Clear Functionality**
+  - Clears all **session data**.
 
-- **Clear Functionality**: 
-  - Clears all session data when the "Clear" button is clicked.
+### 🎨 HTML Template (`single_page.html`)
 
-### HTML Template
+- **File Input Fields** 📂 for **uploading files**.
+- **Buttons** 🔘 to **run passes** and **clear data**.
+- **Conditional Rendering** 👁️ shows results **only if passes are completed**.
 
-The `single_page.html` template provides the user interface, allowing users to upload files and view results. The key elements include:
+### 🔄 Session Management
 
-- **File Input Fields**: For uploading input and OPTAB files.
-- **Buttons**: For running passes and clearing data.
-- **Conditional Rendering**: Displays results only if Pass 1 or Pass 2 has been completed.
+- Uses **Django sessions** to store:
+  - **Intermediate content**
+  - **Symbol tables**
+  - **Program lengths**
+  - **Object code**
 
-### Session Management
+## 📜 License
+This project is open-source and available under the **MIT License**.
 
-Session management is crucial for maintaining state across requests. The application uses Django's built-in session framework to store intermediate content, symbol tables, program lengths, and object code.
-
+---
+💡 **Happy Coding!** 🚀
 
